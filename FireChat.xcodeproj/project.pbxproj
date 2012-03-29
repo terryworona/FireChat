@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5687DEDA1523E33900177804 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DED91523E33900177804 /* UIKit.framework */; };
+		5687DEDC1523E33900177804 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDB1523E33900177804 /* Foundation.framework */; };
+		5687DEDE1523E33900177804 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDD1523E33900177804 /* CoreGraphics.framework */; };
+		5687DEE41523E33900177804 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5687DEE21523E33900177804 /* InfoPlist.strings */; };
+		5687DEE61523E33900177804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5687DEE51523E33900177804 /* main.m */; };
+		5687DEEA1523E33900177804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5687DEE91523E33900177804 /* AppDelegate.m */; };
+		5687DEED1523E33900177804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5687DEEC1523E33900177804 /* ViewController.m */; };
+		5687DEF01523E33900177804 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5687DEEE1523E33900177804 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5687DED51523E33900177804 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5687DED91523E33900177804 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5687DEDB1523E33900177804 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5687DEDD1523E33900177804 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5687DEE11523E33900177804 /* FireChat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FireChat-Info.plist"; sourceTree = "<group>"; };
+		5687DEE31523E33900177804 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5687DEE51523E33900177804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5687DEE71523E33900177804 /* FireChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FireChat-Prefix.pch"; sourceTree = "<group>"; };
+		5687DEE81523E33900177804 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5687DEE91523E33900177804 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5687DEEB1523E33900177804 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5687DEEC1523E33900177804 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5687DEEF1523E33900177804 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5687DED21523E33900177804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5687DEDA1523E33900177804 /* UIKit.framework in Frameworks */,
+				5687DEDC1523E33900177804 /* Foundation.framework in Frameworks */,
+				5687DEDE1523E33900177804 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5687DECA1523E33900177804 = {
+			isa = PBXGroup;
+			children = (
+				5687DEDF1523E33900177804 /* FireChat */,
+				5687DED81523E33900177804 /* Frameworks */,
+				5687DED61523E33900177804 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5687DED61523E33900177804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5687DED51523E33900177804 /* FireChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5687DED81523E33900177804 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5687DED91523E33900177804 /* UIKit.framework */,
+				5687DEDB1523E33900177804 /* Foundation.framework */,
+				5687DEDD1523E33900177804 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5687DEDF1523E33900177804 /* FireChat */ = {
+			isa = PBXGroup;
+			children = (
+				5687DEE81523E33900177804 /* AppDelegate.h */,
+				5687DEE91523E33900177804 /* AppDelegate.m */,
+				5687DEEB1523E33900177804 /* ViewController.h */,
+				5687DEEC1523E33900177804 /* ViewController.m */,
+				5687DEEE1523E33900177804 /* ViewController.xib */,
+				5687DEE01523E33900177804 /* Supporting Files */,
+			);
+			path = FireChat;
+			sourceTree = "<group>";
+		};
+		5687DEE01523E33900177804 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5687DEE11523E33900177804 /* FireChat-Info.plist */,
+				5687DEE21523E33900177804 /* InfoPlist.strings */,
+				5687DEE51523E33900177804 /* main.m */,
+				5687DEE71523E33900177804 /* FireChat-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5687DED41523E33900177804 /* FireChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5687DEF31523E33900177804 /* Build configuration list for PBXNativeTarget "FireChat" */;
+			buildPhases = (
+				5687DED11523E33900177804 /* Sources */,
+				5687DED21523E33900177804 /* Frameworks */,
+				5687DED31523E33900177804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FireChat;
+			productName = FireChat;
+			productReference = 5687DED51523E33900177804 /* FireChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5687DECC1523E33900177804 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 5687DECF1523E33900177804 /* Build configuration list for PBXProject "FireChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5687DECA1523E33900177804;
+			productRefGroup = 5687DED61523E33900177804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5687DED41523E33900177804 /* FireChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5687DED31523E33900177804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5687DEE41523E33900177804 /* InfoPlist.strings in Resources */,
+				5687DEF01523E33900177804 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5687DED11523E33900177804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5687DEE61523E33900177804 /* main.m in Sources */,
+				5687DEEA1523E33900177804 /* AppDelegate.m in Sources */,
+				5687DEED1523E33900177804 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5687DEE21523E33900177804 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5687DEE31523E33900177804 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5687DEEE1523E33900177804 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5687DEEF1523E33900177804 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5687DEF11523E33900177804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5687DEF21523E33900177804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5687DEF41523E33900177804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FireChat/FireChat-Prefix.pch";
+				INFOPLIST_FILE = "FireChat/FireChat-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5687DEF51523E33900177804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FireChat/FireChat-Prefix.pch";
+				INFOPLIST_FILE = "FireChat/FireChat-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5687DECF1523E33900177804 /* Build configuration list for PBXProject "FireChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5687DEF11523E33900177804 /* Debug */,
+				5687DEF21523E33900177804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5687DEF31523E33900177804 /* Build configuration list for PBXNativeTarget "FireChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5687DEF41523E33900177804 /* Debug */,
+				5687DEF51523E33900177804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5687DECC1523E33900177804 /* Project object */;
+}
