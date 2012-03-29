@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FCChatViewController : UITableViewController{
-	
+// views
+#import "UIInputToolbar.h"
+
+@interface FCChatViewController : UIViewController{
+	UIInputToolbar *inputToolbar;
+	UITableView *tableView;
+    
+@private
+    BOOL keyboardIsVisible;
 }
 
 @property (nonatomic, retain) NSArray* messages;
+@property (nonatomic, retain) UIInputToolbar *inputToolbar;
 
 @end

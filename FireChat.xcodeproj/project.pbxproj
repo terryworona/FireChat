@@ -25,6 +25,15 @@
 		567255611523EC4000046BA6 /* FCService+Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255601523EC4000046BA6 /* FCService+Messages.m */; };
 		567255631523EE3600046BA6 /* YAJLiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567255621523EE3600046BA6 /* YAJLiOS.framework */; };
 		5672556A1523F33000046BA6 /* FCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255691523F33000046BA6 /* FCMessage.m */; };
+		567255721523FDB300046BA6 /* UIExpandingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5672556D1523FDB300046BA6 /* UIExpandingTextView.m */; };
+		567255731523FDB300046BA6 /* UIExpandingTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5672556F1523FDB300046BA6 /* UIExpandingTextViewInternal.m */; };
+		567255741523FDB300046BA6 /* UIInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255711523FDB300046BA6 /* UIInputToolbar.m */; };
+		567255801523FF9600046BA6 /* buttonbg@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557A1523FF9600046BA6 /* buttonbg@2x~iphone.png */; };
+		567255811523FF9600046BA6 /* buttonbg~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557B1523FF9600046BA6 /* buttonbg~iphone.png */; };
+		567255821523FF9600046BA6 /* textbg@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557C1523FF9600046BA6 /* textbg@2x~iphone.png */; };
+		567255831523FF9600046BA6 /* textbg~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557D1523FF9600046BA6 /* textbg~iphone.png */; };
+		567255841523FF9600046BA6 /* toolbarbg@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557E1523FF9600046BA6 /* toolbarbg@2x~iphone.png */; };
+		567255851523FF9600046BA6 /* toolbarbg~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672557F1523FF9600046BA6 /* toolbarbg~iphone.png */; };
 		5687DEDA1523E33900177804 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DED91523E33900177804 /* UIKit.framework */; };
 		5687DEDC1523E33900177804 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDB1523E33900177804 /* Foundation.framework */; };
 		5687DEDE1523E33900177804 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDD1523E33900177804 /* CoreGraphics.framework */; };
@@ -69,6 +78,18 @@
 		567255621523EE3600046BA6 /* YAJLiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJLiOS.framework; sourceTree = "<group>"; };
 		567255681523F33000046BA6 /* FCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCMessage.h; sourceTree = "<group>"; };
 		567255691523F33000046BA6 /* FCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCMessage.m; sourceTree = "<group>"; };
+		5672556C1523FDB300046BA6 /* UIExpandingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpandingTextView.h; sourceTree = "<group>"; };
+		5672556D1523FDB300046BA6 /* UIExpandingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpandingTextView.m; sourceTree = "<group>"; };
+		5672556E1523FDB300046BA6 /* UIExpandingTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExpandingTextViewInternal.h; sourceTree = "<group>"; };
+		5672556F1523FDB300046BA6 /* UIExpandingTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExpandingTextViewInternal.m; sourceTree = "<group>"; };
+		567255701523FDB300046BA6 /* UIInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIInputToolbar.h; sourceTree = "<group>"; };
+		567255711523FDB300046BA6 /* UIInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIInputToolbar.m; sourceTree = "<group>"; };
+		5672557A1523FF9600046BA6 /* buttonbg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbg@2x~iphone.png"; sourceTree = "<group>"; };
+		5672557B1523FF9600046BA6 /* buttonbg~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbg~iphone.png"; sourceTree = "<group>"; };
+		5672557C1523FF9600046BA6 /* textbg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textbg@2x~iphone.png"; sourceTree = "<group>"; };
+		5672557D1523FF9600046BA6 /* textbg~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textbg~iphone.png"; sourceTree = "<group>"; };
+		5672557E1523FF9600046BA6 /* toolbarbg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarbg@2x~iphone.png"; sourceTree = "<group>"; };
+		5672557F1523FF9600046BA6 /* toolbarbg~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarbg~iphone.png"; sourceTree = "<group>"; };
 		5687DED51523E33900177804 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5687DED91523E33900177804 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5687DEDB1523E33900177804 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +138,7 @@
 			children = (
 				5672552B1523E72100046BA6 /* AFNetworking */,
 				5672554B1523E72900046BA6 /* SVProgressHUD */,
+				5672556B1523FDB300046BA6 /* UIInputToolbar */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -187,6 +209,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5672556B1523FDB300046BA6 /* UIInputToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				5672556C1523FDB300046BA6 /* UIExpandingTextView.h */,
+				5672556D1523FDB300046BA6 /* UIExpandingTextView.m */,
+				5672556E1523FDB300046BA6 /* UIExpandingTextViewInternal.h */,
+				5672556F1523FDB300046BA6 /* UIExpandingTextViewInternal.m */,
+				567255701523FDB300046BA6 /* UIInputToolbar.h */,
+				567255711523FDB300046BA6 /* UIInputToolbar.m */,
+			);
+			path = UIInputToolbar;
+			sourceTree = "<group>";
+		};
+		567255791523FF9600046BA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5672557A1523FF9600046BA6 /* buttonbg@2x~iphone.png */,
+				5672557B1523FF9600046BA6 /* buttonbg~iphone.png */,
+				5672557C1523FF9600046BA6 /* textbg@2x~iphone.png */,
+				5672557D1523FF9600046BA6 /* textbg~iphone.png */,
+				5672557E1523FF9600046BA6 /* toolbarbg@2x~iphone.png */,
+				5672557F1523FF9600046BA6 /* toolbarbg~iphone.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5687DECA1523E33900177804 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +271,7 @@
 				567254451523E5FA00046BA6 /* Delegate */,
 				5672544E1523E66B00046BA6 /* Libraries */,
 				567255671523F33000046BA6 /* Models */,
+				567255791523FF9600046BA6 /* Resources */,
 				567255541523E77600046BA6 /* Service */,
 				5687DEE01523E33900177804 /* Supporting Files */,
 			);
@@ -292,6 +341,12 @@
 			files = (
 				5687DEE41523E33900177804 /* InfoPlist.strings in Resources */,
 				5672554F1523E72900046BA6 /* SVProgressHUD.bundle in Resources */,
+				567255801523FF9600046BA6 /* buttonbg@2x~iphone.png in Resources */,
+				567255811523FF9600046BA6 /* buttonbg~iphone.png in Resources */,
+				567255821523FF9600046BA6 /* textbg@2x~iphone.png in Resources */,
+				567255831523FF9600046BA6 /* textbg~iphone.png in Resources */,
+				567255841523FF9600046BA6 /* toolbarbg@2x~iphone.png in Resources */,
+				567255851523FF9600046BA6 /* toolbarbg~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +374,9 @@
 				5672555A1523E7CE00046BA6 /* FCChatViewController.m in Sources */,
 				567255611523EC4000046BA6 /* FCService+Messages.m in Sources */,
 				5672556A1523F33000046BA6 /* FCMessage.m in Sources */,
+				567255721523FDB300046BA6 /* UIExpandingTextView.m in Sources */,
+				567255731523FDB300046BA6 /* UIExpandingTextViewInternal.m in Sources */,
+				567255741523FDB300046BA6 /* UIInputToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
