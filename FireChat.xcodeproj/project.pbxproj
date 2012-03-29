@@ -24,6 +24,7 @@
 		5672555A1523E7CE00046BA6 /* FCChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255591523E7CE00046BA6 /* FCChatViewController.m */; };
 		567255611523EC4000046BA6 /* FCService+Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255601523EC4000046BA6 /* FCService+Messages.m */; };
 		567255631523EE3600046BA6 /* YAJLiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567255621523EE3600046BA6 /* YAJLiOS.framework */; };
+		5672556A1523F33000046BA6 /* FCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 567255691523F33000046BA6 /* FCMessage.m */; };
 		5687DEDA1523E33900177804 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DED91523E33900177804 /* UIKit.framework */; };
 		5687DEDC1523E33900177804 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDB1523E33900177804 /* Foundation.framework */; };
 		5687DEDE1523E33900177804 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDD1523E33900177804 /* CoreGraphics.framework */; };
@@ -66,6 +67,8 @@
 		5672555F1523EC4000046BA6 /* FCService+Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FCService+Messages.h"; sourceTree = "<group>"; };
 		567255601523EC4000046BA6 /* FCService+Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FCService+Messages.m"; sourceTree = "<group>"; };
 		567255621523EE3600046BA6 /* YAJLiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJLiOS.framework; sourceTree = "<group>"; };
+		567255681523F33000046BA6 /* FCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCMessage.h; sourceTree = "<group>"; };
+		567255691523F33000046BA6 /* FCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCMessage.m; sourceTree = "<group>"; };
 		5687DED51523E33900177804 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5687DED91523E33900177804 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5687DEDB1523E33900177804 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,15 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		567255671523F33000046BA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				567255681523F33000046BA6 /* FCMessage.h */,
+				567255691523F33000046BA6 /* FCMessage.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5687DECA1523E33900177804 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +222,7 @@
 				5672544A1523E62500046BA6 /* Controllers */,
 				567254451523E5FA00046BA6 /* Delegate */,
 				5672544E1523E66B00046BA6 /* Libraries */,
+				567255671523F33000046BA6 /* Models */,
 				567255541523E77600046BA6 /* Service */,
 				5687DEE01523E33900177804 /* Supporting Files */,
 			);
@@ -305,6 +318,7 @@
 				567255571523E77600046BA6 /* FCService.m in Sources */,
 				5672555A1523E7CE00046BA6 /* FCChatViewController.m in Sources */,
 				567255611523EC4000046BA6 /* FCService+Messages.m in Sources */,
+				5672556A1523F33000046BA6 /* FCMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

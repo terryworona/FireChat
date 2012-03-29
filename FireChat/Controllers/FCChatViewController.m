@@ -15,6 +15,11 @@
 #import "FCService.h"
 #import "FCService+Messages.h"
 
+// models
+#import "FCMessage.h"
+
+static NSString *CellIdentifier = @"Cell";
+
 @interface FCChatViewController ()
 
 - (void)refreshChat;
@@ -23,7 +28,7 @@
 
 @implementation FCChatViewController
 
-@synthesize messages = _messages;
+@synthesize messages;
 
 #pragma mark - Alloc/Init
 
@@ -62,10 +67,10 @@
 - (void)refreshChat
 {
 	[SVProgressHUD showWithStatus:@"Syncing..."];
-	[[FCService sharedInstance] listMessagesWithCompletion:^(NSArray *messages, NSError *error) {
+	[[FCService sharedInstance] listMessagesWithCompletion:^(NSArray *newMessages, NSError *error) {
 		[SVProgressHUD dismiss];
 		if (!error){
-			self.messages = messages;
+			self.messages = newMessages;
 			[self.tableView reloadData];
 		}
 		else{
@@ -85,7 +90,7 @@
 
 - (void)dealloc
 {
-	[_messages release];
+	[messages release];
 	[super dealloc];
 }
 
@@ -93,19 +98,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    return cell;
+	FCMessage *message = [messages objectAtIndex:indexPath.row];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];	
+	if (!cell) {
+		cell = (UITableViewCell*)[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+	}
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	cell.textLabel.text = message.text;
+	cell.detailTextLabel.text = message.name;
+	return cell;
 }
 #pragma mark - Table view delegate
 

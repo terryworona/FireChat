@@ -11,6 +11,9 @@
 // constants
 #import "FCConstants.h"
 
+// models
+#import "FCMessage.h"
+
 @implementation FCService (Messages)
 
 #pragma mark - CRUD
@@ -19,10 +22,15 @@
 {	
 	[self listObjects:kFCResoureChatroom withOptions:nil completion:^(id element, NSError *error) {
 		if (!error){
-			NSLog(@"JSON! %@", element);
-			
-			
-			
+			NSMutableArray *messagesArray = [NSMutableArray array];
+			if ([element isKindOfClass:[NSDictionary class]]){
+				for (NSDictionary *messageDict in [(NSDictionary*)element allValues]){
+					FCMessage *message = [[FCMessage alloc] init];
+					[message updateWithDictionary:messageDict];
+					[messagesArray addObject:message];
+				}
+			}
+			completion([NSArray arrayWithArray:messagesArray], nil);	
 		}
 		else{
 			completion(nil, error);
