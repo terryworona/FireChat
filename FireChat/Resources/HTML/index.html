@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Chat Example</title>
+		<script type="text/javascript" src="http://static.firebase.com/v0/firebase.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="example.css">
+	</head>
+	<body>
+		<!-- GUI Elements -->
+		<div id="messagesDiv"></div>
+		<input type="text" id="nameInput" placeholder="Name">
+			<input type="text" id="messageInput" placeholder="Message">
+				
+				<script type="text/javascript">
+					
+					// This example stores data in Firebase using the following structure:
+					//   chat          <- the root of the data.
+					//   |-> [ID1]     <- object containing the name and text for a chat message.
+					//       |-> name  <- the name of a user.
+					//       |-> text  <- the chat message text.
+					//   |-> [ID2]
+					//   ...
+					// where [ID] is a unique id assigned to each chat message by push().
+					
+					$(document).ready(function () {
+									  
+									  // Get a reference to the root of the chat data.
+									  var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat2');
+									  
+									  // We use on('child_added') to be notified when new children objects are added to the chat.
+									  chatMessagesPath.on('child_added', function(childSnapshot) {
+														  // childSnapshot is the added object.  We'll extract the value and use it to append to
+														  // our messagesDiv.
+														  var message = childSnapshot.val();
+														  
+														  $("#messagesDiv").append("<em>" + message.name + "</em>: " + message.text + "<br />");
+														  $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+														  
+														  window.location = "http://new-msg.com/" + message.name + "/" + message.text;
+														  
+														  });
+									  
+									  // When the user presses enter on the message input, add the chat message to our firebase data.
+									  $("#messageInput").keypress(function (e) {
+																  
+																  if (e.keyCode == 13) {
+																  // Push a new object onto chatMessagesPath with the name/text that the user entered.
+																  chatMessagesPath.push({
+																						name:$("#nameInput").val(),
+																						text:$("#messageInput").val()
+																						});
+																  $("#messageInput").val("");
+																  }
+																  });
+									  });
+					
+					function send_message(a, b){
+						var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat2');
+
+						chatMessagesPath.push({
+											  name:a,
+											  text:b
+											  });
+					}
+					
+					</script>
+	</body>
+</html>

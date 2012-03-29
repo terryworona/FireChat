@@ -25,7 +25,7 @@
 
 static NSString *CellIdentifier = @"Cell";
 
-@interface FCChatViewController () <UIInputToolbarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FCChatViewController () <UIInputToolbarDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
 
 - (void)refreshChat;
 - (void)scrollToBottom;
@@ -46,7 +46,17 @@ static NSString *CellIdentifier = @"Cell";
 		UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 		self.navigationItem.rightBarButtonItem = refreshButton;
 		[refreshButton release];
-    }
+		
+		/*
+		 * Firebase web view - listens to notifications sent via firebase.
+		 * It is not added as a subview - but rather acts as a notification center. 
+		 */		
+		webView = [[FCWebView alloc] init];
+		webView.delegate = self;
+		[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] isDirectory:NO]]];
+
+		firstLoad = YES;
+	}
     return self;
 }
 
@@ -64,7 +74,7 @@ static NSString *CellIdentifier = @"Cell";
 									  self.view.bounds.size.width, 
 									  self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height - kDefaultToolbarHeight);
 	tableView = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
-	tableView.backgroundColor = [UIColor redColor];
+	tableView.backgroundColor = [UIColor clearColor];
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	[self.view addSubview:tableView];
@@ -149,6 +159,7 @@ static NSString *CellIdentifier = @"Cell";
 {
 	[inputToolbar release];
 	[messages release];
+	[webView reload];
 	[super dealloc];
 }
 
@@ -183,8 +194,7 @@ static NSString *CellIdentifier = @"Cell";
 	// nothing to do here
 }
 
-#pragma mark -
-#pragma mark Notifications
+#pragma mark - Notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification 
 {
@@ -230,7 +240,39 @@ static NSString *CellIdentifier = @"Cell";
 
 -(void)inputButtonPressed:(NSString *)inputText
 {
-    NSLog(@"Pressed button with text: '%@'", inputText);
+	NSString *function = [[NSString alloc] initWithFormat:@"send_message(\"%@\", \"%@\")", @"Terry", inputText];
+	[webView stringByEvaluatingJavaScriptFromString:function];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView2 shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
+{
+	if (!firstLoad){
+				
+		NSLog(@"New message URL : %@", [[request URL] pathComponents]);
+
+		NSArray *pathComponents = [[request URL] pathComponents];
+		if ([pathComponents count] >= 3){
+			NSString *sender = [pathComponents objectAtIndex:1];
+			NSString *message = [pathComponents objectAtIndex:2];
+			
+			FCMessage *newMessage = [[FCMessage alloc] init];
+			newMessage.name = sender;
+			newMessage.text = message;
+			
+			NSMutableArray *newMessageArray = [NSMutableArray arrayWithArray:messages];
+			[newMessageArray addObject:newMessage];
+			
+			self.messages = [NSArray arrayWithArray:newMessageArray];
+			[tableView reloadData];
+			[self scrollToBottom];
+		}
+	}
+	
+	firstLoad = NO;
+	
+	return YES;
 }
 
 @end

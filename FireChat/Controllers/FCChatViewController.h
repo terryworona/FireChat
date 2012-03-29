@@ -10,11 +10,15 @@
 
 // views
 #import "UIInputToolbar.h"
+#import "FCWebView.h"
 
 @interface FCChatViewController : UIViewController{
 	UIInputToolbar *inputToolbar;
 	UITableView *tableView;
-    
+	
+	FCWebView *webView;
+    BOOL firstLoad;
+	
 @private
     BOOL keyboardIsVisible;
 }

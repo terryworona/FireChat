@@ -39,7 +39,7 @@
     }
     
     /* Remove the keyboard and clear the text */
-    [self.textView resignFirstResponder];
+    //[self.textView resignFirstResponder];
     [self.textView clearText];
 }
 
@@ -73,6 +73,7 @@
     self.textView = [[UIExpandingTextView alloc] initWithFrame:CGRectMake(7, 7, 236, 26)];
     self.textView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(4.0f, 0.0f, 10.0f, 0.0f);
     self.textView.delegate = self;
+	
     [self addSubview:self.textView];
     
     /* Right align the toolbar button */
@@ -122,7 +123,7 @@
 #pragma mark UIExpandingTextView delegate
 
 -(void)expandingTextView:(UIExpandingTextView *)expandingTextView willChangeHeight:(float)height
-{
+{	
     /* Adjust the height of the toolbar when the input component expands */
     float diff = (textView.frame.size.height - height);
     CGRect r = self.frame;

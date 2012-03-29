@@ -83,7 +83,9 @@
         internalTextView.showsHorizontalScrollIndicator = NO;
         [internalTextView sizeToFit];
         internalTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        
+        internalTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+		internalTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+		
         /* Custom Background image */
         textViewBackgroundImage = [[UIImageView alloc] initWithFrame:backgroundFrame];
         textViewBackgroundImage.image          = [UIImage imageNamed:@"textbg"];
@@ -416,6 +418,12 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)atext 
 {
+	/* override - dismiss keybaord on return */
+	if([atext isEqualToString:@"\n"]) {
+		[textView resignFirstResponder];
+		return NO;
+	}
+	
 	if(![textView hasText] && [atext isEqualToString:@""]) 
     {
         return NO;
