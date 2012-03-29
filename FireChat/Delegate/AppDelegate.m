@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
-
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+
+#pragma mark - Memory Management
 
 - (void)dealloc
 {
@@ -22,12 +22,14 @@
     [super dealloc];
 }
 
+#pragma mark - Application Lifecycle
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-	self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-	self.window.rootViewController = self.viewController;
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];	
+	self.viewController = [[[FCChatViewController alloc] init] autorelease];
+	UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
+	self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
 }
