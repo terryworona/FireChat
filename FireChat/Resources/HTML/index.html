@@ -25,7 +25,7 @@
 					$(document).ready(function () {
 									  
 									  // Get a reference to the root of the chat data.
-									  var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat2');
+									  var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat4');
 									  
 									  // We use on('child_added') to be notified when new children objects are added to the chat.
 									  chatMessagesPath.on('child_added', function(childSnapshot) {
@@ -55,7 +55,7 @@
 									  });
 					
 					function send_message(a, b){
-						var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat2');
+						var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat4');
 
 						chatMessagesPath.push({
 											  name:a,

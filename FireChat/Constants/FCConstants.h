@@ -9,4 +9,4 @@
 #pragma mark - Domain
 
 #define kFCBaseUrl @"http://gamma.firebase.com"
-#define kFCResoureChatroom @"chat2.json"
+#define kFCResoureChatroom @"chat4.json"
