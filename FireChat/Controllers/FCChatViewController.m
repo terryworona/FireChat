@@ -121,8 +121,8 @@ static NSString *CellIdentifier = @"Cell";
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-	
-	[self refreshChat]; // refresh chat everytime we bring the app into the fore-ground
+
+	[self refreshChat]; // refresh anytime view shows up
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -266,7 +266,6 @@ static NSString *CellIdentifier = @"Cell";
 {
 	NSString *function = [[NSString alloc] initWithFormat:@"send_message(\"%@\", \"%@\")", @"Terry", inputText];
 	[webView stringByEvaluatingJavaScriptFromString:function];
-	messageSent = YES; // ensures we don't double post - mutex of sorts
 }
 
 #pragma mark - UIWebViewDelegate
@@ -275,17 +274,24 @@ static NSString *CellIdentifier = @"Cell";
 {	
 	NSLog(@"New message URL : %@", [[request URL] pathComponents]);
 
-	if (messageSent){
+	NSArray *pathComponents = [[request URL] pathComponents];
+	if ([pathComponents count] == 4){
 		
-		messageSent = NO;
+		NSString *sender = [pathComponents objectAtIndex:1];
+		NSString *message = [pathComponents objectAtIndex:2];
+		NSString *identifier = [pathComponents objectAtIndex:3];
 		
-		NSArray *pathComponents = [[request URL] pathComponents];
-		if ([pathComponents count] == 4){
+		BOOL duplicateMessage = NO;
+		if ([messages count] > 0){
+			FCMessage *lastMessage = [messages lastObject];
 			
-			NSString *sender = [pathComponents objectAtIndex:1];
-			NSString *message = [pathComponents objectAtIndex:2];
-			NSString *identifier = [pathComponents objectAtIndex:3];
-			
+			if ([lastMessage.message_id isEqualToString:identifier]){
+				duplicateMessage = YES;
+			}
+		}
+		
+		// add message if not dupe
+		if (!duplicateMessage){
 			FCMessage *newMessage = [[FCMessage alloc] init];
 			newMessage.name = sender;
 			newMessage.text = message;

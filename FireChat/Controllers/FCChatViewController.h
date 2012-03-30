@@ -20,7 +20,6 @@
 	UITableView *tableView;
 	
 	FCWebView *webView;
-	BOOL messageSent;
 		
 @private
     BOOL keyboardIsVisible;
