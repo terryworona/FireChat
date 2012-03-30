@@ -10,7 +10,7 @@
 
 @implementation FCMessage
 
-@synthesize name, text;
+@synthesize name, text, message_id;
 
 #pragma mark - Init/Alloc
 
@@ -31,6 +31,16 @@
 		self.name = [dict objectForKey:@"name"];
 		self.text = [dict objectForKey:@"text"];
 	}
+}
+
+#pragma mark - Memory Management
+
+- (void)dealloc
+{
+	[name release];
+	[text release];
+	[message_id release];
+	[super dealloc];
 }
 
 @end

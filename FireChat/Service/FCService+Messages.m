@@ -24,13 +24,23 @@
 		if (!error){
 			NSMutableArray *messagesArray = [NSMutableArray array];
 			if ([element isKindOfClass:[NSDictionary class]]){
-				for (NSDictionary *messageDict in [(NSDictionary*)element allValues]){
+				for (NSString *messageKey in [(NSDictionary*)element allKeys]){
+					NSDictionary *messageDict = [((NSDictionary*)element) objectForKey:messageKey];
 					FCMessage *message = [[FCMessage alloc] init];
 					[message updateWithDictionary:messageDict];
+					message.message_id = messageKey;
 					[messagesArray addObject:message];
 				}
 			}
-			completion([NSArray arrayWithArray:messagesArray], nil);	
+			
+			NSArray *sortedArray;
+			sortedArray = [messagesArray sortedArrayUsingComparator:^(id a, id b) {
+				NSString *first = [(FCMessage*)a message_id];
+				NSString *second = [(FCMessage*)b message_id];
+				return [first compare:second];
+			}];
+			
+			completion(sortedArray, nil);	
 		}
 		else{
 			completion(nil, error);

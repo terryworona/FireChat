@@ -10,6 +10,7 @@
 
 @interface FCMessage : NSObject
 
+@property (nonatomic, retain) NSString *message_id;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *text;
 

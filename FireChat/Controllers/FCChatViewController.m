@@ -248,12 +248,13 @@ static NSString *CellIdentifier = @"Cell";
 
 - (BOOL)webView:(UIWebView *)webView2 shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
 {
+	NSLog(@"New message URL : %@", [[request URL] pathComponents]);
+
 	if (!firstLoad){
-				
-		NSLog(@"New message URL : %@", [[request URL] pathComponents]);
 
 		NSArray *pathComponents = [[request URL] pathComponents];
-		if ([pathComponents count] >= 3){
+		if ([pathComponents count] == 3){
+
 			NSString *sender = [pathComponents objectAtIndex:1];
 			NSString *message = [pathComponents objectAtIndex:2];
 			
@@ -267,9 +268,9 @@ static NSString *CellIdentifier = @"Cell";
 			self.messages = [NSArray arrayWithArray:newMessageArray];
 			[tableView reloadData];
 			[self scrollToBottom];
+			
 		}
 	}
-	
 	firstLoad = NO;
 	
 	return YES;
