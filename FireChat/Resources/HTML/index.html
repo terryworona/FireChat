@@ -13,7 +13,7 @@
 			$(document).ready(function () {							  
 							  chatMessagesPath.on('child_added', function(childSnapshot) {
 												  var message = childSnapshot.val();
-												  window.location = "http://new-msg.com/" + message.name + "/" + message.text + "/-Ads";
+												  window.location = "http://new-msg.com/" + message.name + "/" + message.text + "/" + childSnapshot.name();
 												  });
 							  });
 	
