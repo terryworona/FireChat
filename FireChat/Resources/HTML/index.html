@@ -8,15 +8,15 @@
 
 		<script type="text/javascript">
 			
-			var chatMessagesPath = new Firebase('http://gamma.firebase.com/new_chat');
+			var chatMessagesPath = new Firebase('http://gamma.firebase.com/chat');
 
 			$(document).ready(function () {							  
 							  chatMessagesPath.on('child_added', function(childSnapshot) {
 												  var message = childSnapshot.val();
-												  window.location = "http://new-msg.com/" + message.name + "/" + message.text;
+												  window.location = "http://new-msg.com/" + message.name + "/" + message.text + "/-Ads";
 												  });
 							  });
-			
+	
 			function send_message(a, b){				
 				chatMessagesPath.push({
 									  name:a,

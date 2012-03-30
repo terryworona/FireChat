@@ -3,10 +3,13 @@
 //  FireChat
 //
 //  Created by Terry Worona on 12-03-28.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 FireChat. All rights reserved.
 //
 
 #import "AppDelegate.h"
+
+// controllers
+#import "ECSlidingViewController.h"
 
 @implementation AppDelegate
 
@@ -26,12 +29,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];	
-	self.viewController = [[[FCChatViewController alloc] init] autorelease];
+	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];	
+	ECSlidingViewController *slidingViewController = [[ECSlidingViewController alloc] init];
+	
+	self.viewController	= [[[FCChatViewController alloc] init] autorelease];
 	UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
-	self.window.rootViewController = navController;
-    [self.window makeKeyAndVisible];
+	slidingViewController.topViewController = navController;
+
+	self.window.rootViewController = slidingViewController;
+	[self.window makeKeyAndVisible];
     return YES;
+	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

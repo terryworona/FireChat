@@ -12,13 +12,16 @@
 #import "UIInputToolbar.h"
 #import "FCWebView.h"
 
+// controllers
+#import "ECSlidingViewController.h"
+
 @interface FCChatViewController : UIViewController{
 	UIInputToolbar *inputToolbar;
 	UITableView *tableView;
 	
 	FCWebView *webView;
-    BOOL firstLoad;
-	
+	BOOL messageSent;
+		
 @private
     BOOL keyboardIsVisible;
 }

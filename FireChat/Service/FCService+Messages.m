@@ -32,15 +32,17 @@
 					[messagesArray addObject:message];
 				}
 			}
+			else{
+				completion([NSArray arrayWithArray:messagesArray], nil);
+			}
 			
-			NSArray *sortedArray;
-			sortedArray = [messagesArray sortedArrayUsingComparator:^(id a, id b) {
-				NSString *first = [(FCMessage*)a message_id];
-				NSString *second = [(FCMessage*)b message_id];
-				return [first compare:second];
-			}];
-			
-			completion(sortedArray, nil);	
+			if ([messagesArray count] > 0){
+				completion([messagesArray sortedArrayUsingComparator:^(id a, id b) {
+					NSString *first = [(FCMessage*)a message_id];
+					NSString *second = [(FCMessage*)b message_id];
+					return [first compare:second];
+				}], nil);
+			}
 		}
 		else{
 			completion(nil, error);

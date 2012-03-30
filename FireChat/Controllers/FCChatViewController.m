@@ -18,6 +18,9 @@
 // models
 #import "FCMessage.h"
 
+// controllers
+#import "FCSettingsViewController.h"
+
 #define kStatusBarHeight 20
 #define kDefaultToolbarHeight 40
 #define kKeyboardHeightPortrait 216
@@ -25,7 +28,7 @@
 
 static NSString *CellIdentifier = @"Cell";
 
-@interface FCChatViewController () <UIInputToolbarDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
+@interface FCChatViewController () <UIInputToolbarDelegate, FCSettingsViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
 
 - (void)refreshChat;
 - (void)scrollToBottom;
@@ -46,6 +49,10 @@ static NSString *CellIdentifier = @"Cell";
 		UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 		self.navigationItem.rightBarButtonItem = refreshButton;
 		[refreshButton release];
+
+		UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(settingsButtonPressed:)];
+		self.navigationItem.leftBarButtonItem = settingsButton;
+		[settingsButton release];
 		
 		/*
 		 * Firebase web view - listens to notifications sent via firebase.
@@ -54,8 +61,6 @@ static NSString *CellIdentifier = @"Cell";
 		webView = [[FCWebView alloc] init];
 		webView.delegate = self;
 		[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] isDirectory:NO]]];
-
-		firstLoad = YES;
 	}
     return self;
 }
@@ -96,6 +101,20 @@ static NSString *CellIdentifier = @"Cell";
 	inputToolbar = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+		
+	if (![self.slidingViewController.underLeftViewController isKindOfClass:[FCSettingsViewController class]]) {
+		FCSettingsViewController *settingsController = [[[FCSettingsViewController alloc] init] autorelease];
+		settingsController.delegate = self;
+		UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:settingsController] autorelease];
+		self.slidingViewController.underLeftViewController  = navController;
+	}
+	
+	[self.view addGestureRecognizer:self.slidingViewController.panGesture];
+	[self.slidingViewController setAnchorRightRevealAmount:280.0f];
+}
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -132,9 +151,9 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)refreshChat
 {
-	[SVProgressHUD showWithStatus:@"Syncing..."];
+	[SVProgressHUD showWithStatus:@"Syncing..."];			
 	[[FCService sharedInstance] listMessagesWithCompletion:^(NSArray *newMessages, NSError *error) {
-		[SVProgressHUD dismiss];
+		[SVProgressHUD dismiss];			
 		if (!error){
 			self.messages = newMessages;
 			[tableView reloadData];
@@ -151,6 +170,11 @@ static NSString *CellIdentifier = @"Cell";
 - (void)refreshButtonPressed:(id)sender
 {
 	[self refreshChat];
+}
+
+- (void)settingsButtonPressed:(id)sender
+{
+	[self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 #pragma mark - Memory Management
@@ -242,25 +266,30 @@ static NSString *CellIdentifier = @"Cell";
 {
 	NSString *function = [[NSString alloc] initWithFormat:@"send_message(\"%@\", \"%@\")", @"Terry", inputText];
 	[webView stringByEvaluatingJavaScriptFromString:function];
+	messageSent = YES; // ensures we don't double post - mutex of sorts
 }
 
 #pragma mark - UIWebViewDelegate
 
-- (BOOL)webView:(UIWebView *)webView2 shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
-{
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
+{	
 	NSLog(@"New message URL : %@", [[request URL] pathComponents]);
 
-	if (!firstLoad){
-
+	if (messageSent){
+		
+		messageSent = NO;
+		
 		NSArray *pathComponents = [[request URL] pathComponents];
-		if ([pathComponents count] == 3){
-
+		if ([pathComponents count] == 4){
+			
 			NSString *sender = [pathComponents objectAtIndex:1];
 			NSString *message = [pathComponents objectAtIndex:2];
+			NSString *identifier = [pathComponents objectAtIndex:3];
 			
 			FCMessage *newMessage = [[FCMessage alloc] init];
 			newMessage.name = sender;
 			newMessage.text = message;
+			newMessage.message_id = identifier;
 			
 			NSMutableArray *newMessageArray = [NSMutableArray arrayWithArray:messages];
 			[newMessageArray addObject:newMessage];
@@ -268,12 +297,17 @@ static NSString *CellIdentifier = @"Cell";
 			self.messages = [NSArray arrayWithArray:newMessageArray];
 			[tableView reloadData];
 			[self scrollToBottom];
-			
 		}
 	}
-	firstLoad = NO;
 	
 	return YES;
+}
+
+#pragma mark - FCSettingsViewController
+
+- (void)viewWillAppearWithSettingsViewController:(FCSettingsViewController *)controller
+{
+	[inputToolbar.textView resignFirstResponder];
 }
 
 @end

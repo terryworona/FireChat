@@ -3,7 +3,7 @@
 //  FireChat
 //
 //  Created by Terry Worona on 12-03-28.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 FireChat. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
