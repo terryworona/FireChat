@@ -26,7 +26,7 @@
 #define kKeyboardHeightPortrait 216
 #define kKeyboardHeightLandscape 140
 
-static NSString *CellIdentifier = @"Cell";
+static NSString *CellIdentifier = @"ChatCell";
 
 @interface FCChatViewController () <UIInputToolbarDelegate, FCSettingsViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
 

@@ -8,11 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+// views
+#import "ELCTextfieldCell.h"
+
+// controllers
+#import "ECSlidingViewController.h"
+
 @protocol FCSettingsViewControllerDelegate;
 
-@interface FCSettingsViewController : UIViewController{
+@interface FCSettingsViewController : UITableViewController <ELCTextFieldDelegate> {
 	id <FCSettingsViewControllerDelegate> delegate;
+	
+	NSArray *labels;
+	NSArray *placeholders;
 }
+
+@property (nonatomic, retain) NSArray *labels;
+@property (nonatomic, retain) NSArray *placeholders;
 
 @property (nonatomic, assign) id <FCSettingsViewControllerDelegate> delegate;
 
