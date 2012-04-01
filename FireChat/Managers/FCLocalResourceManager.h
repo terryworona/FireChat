@@ -21,5 +21,6 @@
 
 - (void)setUsername:(NSString*)username;
 - (void)setChatroom:(NSString*)chatroom;
+- (void)setChatroom:(NSString *)chatroom andUsername:(NSString*)username;
 
 @end

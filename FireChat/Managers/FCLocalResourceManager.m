@@ -75,4 +75,16 @@
 	}
 }
 
+- (void)setChatroom:(NSString *)chatroom andUsername:(NSString*)username
+{
+	if (username && [username length] > 0){
+		[[self userDefaults] setObject:username forKey:kFCUserDefaultUsername];
+	}
+	if (chatroom && [chatroom length] > 0){
+		[[self userDefaults] setObject:chatroom forKey:kFCUserDefaultChatroom];
+	}
+
+	[[self userDefaults] synchronize];	
+}
+
 @end

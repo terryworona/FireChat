@@ -47,8 +47,8 @@ static NSString *CellIdentifier = @"ChatCell";
 - (id)init
 {
     self = [super init];
-    if (self) {
-        self.navigationItem.title = @"FireChat";
+    if (self) {		
+        self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
 		UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 		self.navigationItem.rightBarButtonItem = refreshButton;
 		[refreshButton release];
@@ -197,11 +197,6 @@ static NSString *CellIdentifier = @"ChatCell";
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	return [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [messages count];
@@ -322,6 +317,11 @@ static NSString *CellIdentifier = @"ChatCell";
 - (void)viewWillAppearWithSettingsViewController:(FCSettingsViewController *)controller
 {
 	[inputToolbar.textView resignFirstResponder];
+}
+
+- (void)viewWillDisappearWithSettingsViewController:(FCSettingsViewController *)controller
+{
+	self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
 }
 
 @end

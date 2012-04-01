@@ -33,5 +33,6 @@
 @protocol FCSettingsViewControllerDelegate <NSObject>
 
 - (void)viewWillAppearWithSettingsViewController:(FCSettingsViewController*)controller;
+- (void)viewWillDisappearWithSettingsViewController:(FCSettingsViewController*)controller;
 
 @end

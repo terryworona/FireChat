@@ -15,7 +15,6 @@ static NSString *CellIdentifier = @"SettingsCell";
 
 @interface FCSettingsViewController ()
 
-- (void)updateSaveButtonState;
 
 @end
 
@@ -49,11 +48,6 @@ static NSString *CellIdentifier = @"SettingsCell";
 	self.placeholders = [NSArray arrayWithObjects:@"Enter Your Username", @"Enter A Chatroom", nil];	
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
@@ -71,16 +65,6 @@ static NSString *CellIdentifier = @"SettingsCell";
 	[super dealloc];
 }
 
-#pragma mark - View Helpers
-
-- (void)updateSaveButtonState
-{
-	ELCTextfieldCell *usernameCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-    ELCTextfieldCell *chatroomCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-
-	self.navigationItem.leftBarButtonItem.enabled = [usernameCell.rightTextField.text length] > 0 && [chatroomCell.rightTextField.text length] > 0;
-}
-
 #pragma mark - Table view data source
 
 - (void)configureCell:(ELCTextfieldCell *)cell atIndexPath:(NSIndexPath *)indexPath 
@@ -93,10 +77,10 @@ static NSString *CellIdentifier = @"SettingsCell";
 	//Disables UITableViewCell from accidentally becoming selected.
 	cell.selectionStyle = UITableViewCellEditingStyleNone;
 	
-	if (indexPath.row == 1){
+	if (indexPath.row == 0){
 		cell.rightTextField.text = [[FCLocalResourceManager sharedInstance] getUsername];
 	}
-	else{
+	else if (indexPath.row == 1){
 		cell.rightTextField.text = [[FCLocalResourceManager sharedInstance] getChatroom];	
 	}
 }
@@ -117,6 +101,10 @@ static NSString *CellIdentifier = @"SettingsCell";
     if (cell == nil) {
         cell = [[[ELCTextfieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+	
+	cell.rightTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+	cell.rightTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+	
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -137,21 +125,37 @@ static NSString *CellIdentifier = @"SettingsCell";
 
 - (void)updateTextLabelAtIndexPath:(NSIndexPath*)indexPath string:(NSString*)string 
 {
-	[self updateSaveButtonState];
+	ELCTextfieldCell *changedCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+	
+	BOOL enableSave = YES;
+	for (int i=0; i < [self.tableView numberOfRowsInSection:0]; i++){
+		ELCTextfieldCell *cell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+		if (cell != changedCell){
+			if ([cell.rightTextField.text length] <= 0){
+				enableSave = NO;
+			}
+		}
+	}
+	self.navigationItem.leftBarButtonItem.enabled = enableSave && [string length] > 0;
 }
 
 #pragma mark - Button Actions
 
 - (void)saveButtonPressed:(id)sender
 {
-	ELCTextfieldCell *usernameCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-    ELCTextfieldCell *chatroomCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-
-	[[FCLocalResourceManager sharedInstance] setUsername:usernameCell.rightTextField.text];
-	[[FCLocalResourceManager sharedInstance] setChatroom:chatroomCell.rightTextField.text];
-
+	ELCTextfieldCell *usernameCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    ELCTextfieldCell *chatroomCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+	[[FCLocalResourceManager sharedInstance] setChatroom:chatroomCell.rightTextField.text andUsername:usernameCell.rightTextField.text];
+	
+	[usernameCell.rightTextField resignFirstResponder];
+	[chatroomCell.rightTextField resignFirstResponder];
+	
 	[self.slidingViewController resetTopView];
 	
+	if ([delegate respondsToSelector:@selector(viewWillAppearWithSettingsViewController:)]){
+		[delegate viewWillDisappearWithSettingsViewController:self];			
+	}
+
 }
 
 @end
