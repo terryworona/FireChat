@@ -42,7 +42,6 @@
 		567255941524D09100046BA6 /* textbg~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672558E1524D09100046BA6 /* textbg~iphone.png */; };
 		567255951524D09100046BA6 /* toolbarbg@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5672558F1524D09100046BA6 /* toolbarbg@2x~iphone.png */; };
 		567255961524D09100046BA6 /* toolbarbg~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 567255901524D09100046BA6 /* toolbarbg~iphone.png */; };
-		567255991524D0AE00046BA6 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 567255981524D0AE00046BA6 /* index.html */; };
 		567255A01524D0E100046BA6 /* FCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5672559F1524D0E100046BA6 /* FCWebView.m */; };
 		5687DEDA1523E33900177804 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DED91523E33900177804 /* UIKit.framework */; };
 		5687DEDC1523E33900177804 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5687DEDB1523E33900177804 /* Foundation.framework */; };
@@ -116,7 +115,6 @@
 		5672558E1524D09100046BA6 /* textbg~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textbg~iphone.png"; sourceTree = "<group>"; };
 		5672558F1524D09100046BA6 /* toolbarbg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarbg@2x~iphone.png"; sourceTree = "<group>"; };
 		567255901524D09100046BA6 /* toolbarbg~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarbg~iphone.png"; sourceTree = "<group>"; };
-		567255981524D0AE00046BA6 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		5672559E1524D0E100046BA6 /* FCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCWebView.h; sourceTree = "<group>"; };
 		5672559F1524D0E100046BA6 /* FCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCWebView.m; sourceTree = "<group>"; };
 		5687DED51523E33900177804 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,7 +298,6 @@
 		567255791523FF9600046BA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				567255971524D0AE00046BA6 /* HTML */,
 				5672558A1524D09100046BA6 /* Images */,
 				560DA745152827FC007C877B /* Templates */,
 			);
@@ -318,14 +315,6 @@
 				567255901524D09100046BA6 /* toolbarbg~iphone.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		567255971524D0AE00046BA6 /* HTML */ = {
-			isa = PBXGroup;
-			children = (
-				567255981524D0AE00046BA6 /* index.html */,
-			);
-			path = HTML;
 			sourceTree = "<group>";
 		};
 		5672559D1524D0E100046BA6 /* Views */ = {
@@ -451,7 +440,6 @@
 				567255941524D09100046BA6 /* textbg~iphone.png in Resources */,
 				567255951524D09100046BA6 /* toolbarbg@2x~iphone.png in Resources */,
 				567255961524D09100046BA6 /* toolbarbg~iphone.png in Resources */,
-				567255991524D0AE00046BA6 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
