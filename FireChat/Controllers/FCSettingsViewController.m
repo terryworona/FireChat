@@ -8,9 +8,14 @@
 
 #import "FCSettingsViewController.h"
 
+// managers
+#import "FCLocalResourceManager.h"
+
 static NSString *CellIdentifier = @"SettingsCell";
 
 @interface FCSettingsViewController ()
+
+- (void)updateSaveButtonState;
 
 @end
 
@@ -41,7 +46,7 @@ static NSString *CellIdentifier = @"SettingsCell";
     [super viewDidLoad];
 	
 	self.labels = [NSArray arrayWithObjects:@"Username", @"Chatroom", nil];
-	self.placeholders = [NSArray arrayWithObjects:@"Enter Your Username", @"Enter A Chatroom", nil];
+	self.placeholders = [NSArray arrayWithObjects:@"Enter Your Username", @"Enter A Chatroom", nil];	
 }
 
 - (void)viewDidUnload
@@ -66,6 +71,16 @@ static NSString *CellIdentifier = @"SettingsCell";
 	[super dealloc];
 }
 
+#pragma mark - View Helpers
+
+- (void)updateSaveButtonState
+{
+	ELCTextfieldCell *usernameCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    ELCTextfieldCell *chatroomCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+
+	self.navigationItem.leftBarButtonItem.enabled = [usernameCell.rightTextField.text length] > 0 && [chatroomCell.rightTextField.text length] > 0;
+}
+
 #pragma mark - Table view data source
 
 - (void)configureCell:(ELCTextfieldCell *)cell atIndexPath:(NSIndexPath *)indexPath 
@@ -77,6 +92,13 @@ static NSString *CellIdentifier = @"SettingsCell";
 
 	//Disables UITableViewCell from accidentally becoming selected.
 	cell.selectionStyle = UITableViewCellEditingStyleNone;
+	
+	if (indexPath.row == 1){
+		cell.rightTextField.text = [[FCLocalResourceManager sharedInstance] getUsername];
+	}
+	else{
+		cell.rightTextField.text = [[FCLocalResourceManager sharedInstance] getChatroom];	
+	}
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
@@ -114,15 +136,22 @@ static NSString *CellIdentifier = @"SettingsCell";
 }
 
 - (void)updateTextLabelAtIndexPath:(NSIndexPath*)indexPath string:(NSString*)string 
-{	
-	NSLog(@"See input: %@ from section: %d row: %d, should update models appropriately", string, indexPath.section, indexPath.row);
+{
+	[self updateSaveButtonState];
 }
 
 #pragma mark - Button Actions
 
 - (void)saveButtonPressed:(id)sender
 {
+	ELCTextfieldCell *usernameCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    ELCTextfieldCell *chatroomCell = (ELCTextfieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+
+	[[FCLocalResourceManager sharedInstance] setUsername:usernameCell.rightTextField.text];
+	[[FCLocalResourceManager sharedInstance] setChatroom:chatroomCell.rightTextField.text];
+
 	[self.slidingViewController resetTopView];
+	
 }
 
 @end

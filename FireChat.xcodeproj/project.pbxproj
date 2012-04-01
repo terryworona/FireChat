@@ -10,6 +10,7 @@
 		560DA6FB1527F9B8007C877B /* ELCTextfieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560DA6F61527F9B8007C877B /* ELCTextfieldCell.m */; };
 		560DA6FC1527F9B8007C877B /* ELCTextFieldCellDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 560DA6F81527F9B8007C877B /* ELCTextFieldCellDemoAppDelegate.m */; };
 		560DA6FD1527F9B8007C877B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560DA6FA1527F9B8007C877B /* RootViewController.m */; };
+		560DA7231527FF2A007C877B /* FCLocalResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 560DA7221527FF2A007C877B /* FCLocalResourceManager.m */; };
 		5649FDA415257198008877B2 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5649FDA115257198008877B2 /* ECSlidingViewController.m */; };
 		5649FDA515257198008877B2 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5649FDA315257198008877B2 /* UIImage+ImageWithUIView.m */; };
 		5649FDAC15257913008877B2 /* FCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5649FDAB15257913008877B2 /* FCSettingsViewController.m */; };
@@ -56,6 +57,8 @@
 		560DA6F81527F9B8007C877B /* ELCTextFieldCellDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCTextFieldCellDemoAppDelegate.m; sourceTree = "<group>"; };
 		560DA6F91527F9B8007C877B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		560DA6FA1527F9B8007C877B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		560DA7211527FF2A007C877B /* FCLocalResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCLocalResourceManager.h; sourceTree = "<group>"; };
+		560DA7221527FF2A007C877B /* FCLocalResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCLocalResourceManager.m; sourceTree = "<group>"; };
 		5649FDA015257198008877B2 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		5649FDA115257198008877B2 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		5649FDA215257198008877B2 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -149,6 +152,15 @@
 				560DA6FA1527F9B8007C877B /* RootViewController.m */,
 			);
 			path = ELCTextField;
+			sourceTree = "<group>";
+		};
+		560DA7201527FF2A007C877B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				560DA7211527FF2A007C877B /* FCLocalResourceManager.h */,
+				560DA7221527FF2A007C877B /* FCLocalResourceManager.m */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		5649FD9F15257198008877B2 /* ECSlidingViewController */ = {
@@ -347,6 +359,7 @@
 				5672544A1523E62500046BA6 /* Controllers */,
 				567254451523E5FA00046BA6 /* Delegate */,
 				5672544E1523E66B00046BA6 /* Libraries */,
+				560DA7201527FF2A007C877B /* Managers */,
 				567255671523F33000046BA6 /* Models */,
 				567255791523FF9600046BA6 /* Resources */,
 				567255541523E77600046BA6 /* Service */,
@@ -463,6 +476,7 @@
 				560DA6FB1527F9B8007C877B /* ELCTextfieldCell.m in Sources */,
 				560DA6FC1527F9B8007C877B /* ELCTextFieldCellDemoAppDelegate.m in Sources */,
 				560DA6FD1527F9B8007C877B /* RootViewController.m in Sources */,
+				560DA7231527FF2A007C877B /* FCLocalResourceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

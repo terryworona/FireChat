@@ -21,6 +21,9 @@
 // controllers
 #import "FCSettingsViewController.h"
 
+// managers
+#import "FCLocalResourceManager.h"
+
 #define kStatusBarHeight 20
 #define kDefaultToolbarHeight 40
 #define kKeyboardHeightPortrait 216
@@ -113,7 +116,7 @@ static NSString *CellIdentifier = @"ChatCell";
 	}
 	
 	[self.view addGestureRecognizer:self.slidingViewController.panGesture];
-	[self.slidingViewController setAnchorRightRevealAmount:280.0f];
+	[self.slidingViewController setAnchorRightRevealAmount:320.0f];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -192,6 +195,11 @@ static NSString *CellIdentifier = @"ChatCell";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	return [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

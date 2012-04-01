@@ -10,3 +10,8 @@
 
 #define kFCBaseUrl @"http://gamma.firebase.com"
 #define kFCResoureChatroom @"chat.json"
+
+#pragma mark - NSUserDefaults
+
+#define kFCUserDefaultUsername @"kFCUserDefaultUsername"
+#define kFCUserDefaultChatroom @"kFCUserDefaultChatroom"
