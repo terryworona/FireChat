@@ -14,13 +14,16 @@
 // models
 #import "FCMessage.h"
 
+// managers
+#import "FCLocalResourceManager.h"
+
 @implementation FCService (Messages)
 
 #pragma mark - CRUD
 
 - (void)listMessagesWithCompletion:(ListMessagesCallback)completion
 {	
-	[self listObjects:kFCResoureChatroom withOptions:nil completion:^(id element, NSError *error) {
+	[self listObjects:[NSString stringWithFormat:@"%@.json", [[FCLocalResourceManager sharedInstance] getChatroom]] withOptions:nil completion:^(id element, NSError *error) {
 		if (!error){
 			NSMutableArray *messagesArray = [NSMutableArray array];
 			if ([element isKindOfClass:[NSDictionary class]]){

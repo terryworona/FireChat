@@ -18,6 +18,9 @@
 // models
 #import "FCMessage.h"
 
+// templates
+#import "FCHtmlTemplates.h"
+
 // controllers
 #import "FCSettingsViewController.h"
 
@@ -48,7 +51,6 @@ static NSString *CellIdentifier = @"ChatCell";
 {
     self = [super init];
     if (self) {		
-        self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
 		UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 		self.navigationItem.rightBarButtonItem = refreshButton;
 		[refreshButton release];
@@ -63,7 +65,6 @@ static NSString *CellIdentifier = @"ChatCell";
 		 */		
 		webView = [[FCWebView alloc] init];
 		webView.delegate = self;
-		[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] isDirectory:NO]]];
 	}
     return self;
 }
@@ -166,6 +167,11 @@ static NSString *CellIdentifier = @"ChatCell";
 			[SVProgressHUD showErrorWithStatus:@"Sync Error!"];
 		}
 	}];
+	
+	self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
+	
+	NSString *html = [NSString stringWithFormat:kFCHtmlChatTemplate, [[FCLocalResourceManager sharedInstance] getChatroom]];		
+	[webView loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];  
 }
 
 #pragma mark - Button Presses
@@ -267,7 +273,7 @@ static NSString *CellIdentifier = @"ChatCell";
 
 -(void)inputButtonPressed:(NSString *)inputText
 {
-	NSString *function = [[NSString alloc] initWithFormat:@"send_message(\"%@\", \"%@\")", @"Terry", inputText];
+	NSString *function = [[NSString alloc] initWithFormat:@"send_message(\"%@\", \"%@\")", [[FCLocalResourceManager sharedInstance] getUsername], inputText];
 	[webView stringByEvaluatingJavaScriptFromString:function];
 }
 
@@ -321,7 +327,7 @@ static NSString *CellIdentifier = @"ChatCell";
 
 - (void)viewWillDisappearWithSettingsViewController:(FCSettingsViewController *)controller
 {
-	self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
+	[self refreshChat];
 }
 
 @end
