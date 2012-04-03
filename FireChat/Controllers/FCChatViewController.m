@@ -123,6 +123,7 @@ static NSString *CellIdentifier = @"ChatCell";
 	[self.view addGestureRecognizer:self.slidingViewController.panGesture];
 	[self.slidingViewController setAnchorRightRevealAmount:320.0f];
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -391,7 +392,6 @@ static NSString *CellIdentifier = @"ChatCell";
 	usernameLabel.frame = CGRectMake(xOffset, yOffset, usernameSize.width, usernameSize.height);
 	yOffset += usernameLabel.frame.size.height;
 	messageLabel.frame = CGRectMake(xOffset, yOffset, messageSize.width, messageSize.height);
-
 }
 
 #pragma mark - Memory Management

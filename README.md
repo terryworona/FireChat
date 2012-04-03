@@ -1,21 +1,44 @@
 # FireChat
 
+<p>
+	Terry Worona
+</p>
+
+<p>
+	Tweet me <a href="http://www.twitter.com/terryworona">@terryworona</a>
+</p>
+
+<p>
+	Email me at <a href="mailto:terryworona@gmail.com">terryworona@gmail.com</a>
+</p>
+
 <center>
 	<img src="screens/firechat.png">
 </center>
 
-## Overview
+<br/>
 
-Firechat is a simple chat client that interfaces with Firebase's real-time scalable backend (primarily intended to be used with web-applications). Firechat is intended to prototype the capabilities of creating a truely native iOS application that interfaces with Firebase's javascript library and service infrastructure.
+## Overview
+---
+
+*FireChat* is a simple chat client that interfaces with <a href="http://www.firebase.com/">Firebase</a>'s real-time scalable backend (primarily intended to be used with web-applications). *FireChat* is intended to prototype the capabilities of creating a truely native iOS application that interfaces with <a href="http://www.firebase.com/">Firebase</a>'s javascript library and service infrastructure.
+
+<br/>
+
+<center>
+	<img src="screens/iphone.png">
+</center>
+
+<br/>
 
 ## Web Hooks
+---
 
-Firechat's main communication pipeline is established through a UIWebView instance. The UIWebView instance is *not* added a subview to any controller. It is retained as a communication channel allowing javascript hooks to pass data back and fourth between client and server.
+FireChat's main communication pipeline is established through a UIWebView instance. The UIWebView instance is *not* added as a subview to any controller. It is retained as a communication channel allowing javascript hooks to pass data back and fourth between client and server.
 
-## Why Is This Exciting?
-Aside from creating (expensive and messy) open socket communication channels, there has been no simple two-way-communication protocol for mobile client<->server relationships.
 
 ## License
+---
 
 Copyright (C) 2012 Terry Worona
 
