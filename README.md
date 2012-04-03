@@ -13,32 +13,29 @@
 </p>
 
 <center>
-	<img src="screens/firechat.png">
+	<img src="/screens/firechat.png">
 </center>
 
 <br/>
 
 ## Overview
----
 
 *FireChat* is a simple chat client that interfaces with <a href="http://www.firebase.com/">Firebase</a>'s real-time scalable backend (primarily intended to be used with web-applications). *FireChat* is intended to prototype the capabilities of creating a truely native iOS application that interfaces with <a href="http://www.firebase.com/">Firebase</a>'s javascript library and service infrastructure.
 
 <br/>
 
 <center>
-	<img src="screens/iphone.png">
+	<img src="/screens/iphone.png">
 </center>
 
 <br/>
 
 ## Web Hooks
----
 
 FireChat's main communication pipeline is established through a UIWebView instance. The UIWebView instance is *not* added as a subview to any controller. It is retained as a communication channel allowing javascript hooks to pass data back and fourth between client and server.
 
 
 ## License
----
 
 Copyright (C) 2012 Terry Worona
 
