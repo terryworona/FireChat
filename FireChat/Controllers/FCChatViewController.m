@@ -32,6 +32,10 @@
 #define kKeyboardHeightPortrait 216
 #define kKeyboardHeightLandscape 140
 
+#define kFCChatCellPadding 10
+#define kFCChatCellUsernameSize 14
+#define kFCChatCellMessageSize 16
+
 static NSString *CellIdentifier = @"ChatCell";
 
 @interface FCChatViewController () <UIInputToolbarDelegate, FCSettingsViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
@@ -211,15 +215,28 @@ static NSString *CellIdentifier = @"ChatCell";
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	FCMessage *message = [messages objectAtIndex:indexPath.row];
-	UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];	
+	FCChatCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];	
 	if (!cell) {
-		cell = (UITableViewCell*)[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		cell = (FCChatCell*)[[[FCChatCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	cell.textLabel.text = message.text;
-	cell.detailTextLabel.text = message.name;
+	cell.messageLabel.text = message.text;
+	cell.usernameLabel.text = message.name;
 	return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	FCMessage *message = [messages objectAtIndex:indexPath.row];
+
+	CGFloat width = self.view.frame.size.width - (kFCChatCellPadding*2);
+	
+	CGSize usernameSize = [message.name sizeWithFont:[UIFont systemFontOfSize:kFCChatCellUsernameSize] constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+	CGSize messageSize = [message.text sizeWithFont:[UIFont systemFontOfSize:kFCChatCellMessageSize] constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+	
+	return (kFCChatCellPadding*2) + usernameSize.height + messageSize.height;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -328,6 +345,62 @@ static NSString *CellIdentifier = @"ChatCell";
 - (void)viewWillDisappearWithSettingsViewController:(FCSettingsViewController *)controller
 {
 	[self refreshChat];
+}
+
+@end
+
+@implementation FCChatCell
+
+@synthesize messageLabel, usernameLabel;
+
+#pragma mark - Alloc/Init
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	if (self){
+		messageLabel = [[UILabel alloc] init];
+		messageLabel.font = [UIFont systemFontOfSize:kFCChatCellMessageSize];
+		messageLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		messageLabel.textColor = [UIColor blackColor];
+		messageLabel.numberOfLines = 0;
+		[self addSubview:messageLabel];
+		
+		usernameLabel = [[UILabel alloc] init];
+		usernameLabel.font = [UIFont boldSystemFontOfSize:kFCChatCellUsernameSize];
+		usernameLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		usernameLabel.textColor = [UIColor grayColor];
+		[self addSubview:usernameLabel];
+	}
+	return self;
+}
+
+#pragma mark - Layout
+
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+	
+	CGFloat xOffset = kFCChatCellPadding;
+	CGFloat yOffset = kFCChatCellPadding;
+	CGFloat width = self.bounds.size.width - (xOffset*2);
+	
+	CGSize usernameSize = [usernameLabel.text sizeWithFont:usernameLabel.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:usernameLabel.lineBreakMode];
+	CGSize messageSize = [messageLabel.text sizeWithFont:messageLabel.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:usernameLabel.lineBreakMode];
+
+	usernameLabel.frame = CGRectMake(xOffset, yOffset, usernameSize.width, usernameSize.height);
+	yOffset += usernameLabel.frame.size.height;
+	messageLabel.frame = CGRectMake(xOffset, yOffset, messageSize.width, messageSize.height);
+
+}
+
+#pragma mark - Memory Management
+
+- (void)dealloc
+{
+	[messageLabel release];
+	[usernameLabel release];
+	[super dealloc];
 }
 
 @end

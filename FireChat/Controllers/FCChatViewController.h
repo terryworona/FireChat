@@ -29,3 +29,13 @@
 @property (nonatomic, retain) UIInputToolbar *inputToolbar;
 
 @end
+
+@interface FCChatCell : UITableViewCell{
+	UILabel *usernameLabel;
+	UILabel *messageLabel;
+}
+
+@property (nonatomic, retain) UILabel *usernameLabel;
+@property (nonatomic, retain) UILabel *messageLabel;
+
+@end
