@@ -13,7 +13,7 @@
 </p>
 
 <center>
-	<img src="/screens/firechat.png">
+	<img src="https://github.com/terryworona/FireChat/raw/master/screens/firechat.png">
 </center>
 
 <br/>
@@ -25,7 +25,7 @@
 <br/>
 
 <center>
-	<img src="/screens/iphone.png">
+	<img src="https://github.com/terryworona/FireChat/raw/master/screens/iphone.png">
 </center>
 
 <br/>
