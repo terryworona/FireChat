@@ -12,9 +12,9 @@
 	Email me at <a href="mailto:terryworona@gmail.com">terryworona@gmail.com</a>
 </p>
 
-<div style="float:right;">
+<p style="margin 0 auto;">
 	<img src="https://github.com/terryworona/FireChat/raw/master/screens/firechat.png">
-</div>
+</p>
 
 <br/>
 
@@ -24,9 +24,9 @@
 
 <br/>
 
-<div style="float:right;">
+<center>
 	<img src="https://github.com/terryworona/FireChat/raw/master/screens/iphone.png">
-</div>
+</center>
 
 <br/>
 
