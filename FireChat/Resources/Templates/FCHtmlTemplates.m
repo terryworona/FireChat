@@ -16,7 +16,7 @@ NSString * const kFCHtmlChatTemplate = @"<html>\
 </head>\
 <body>\
 <script type=\"text/javascript\">\
-var chatMessagesPath = new Firebase(\'http://gamma.firebase.com/%@\');\
+var chatMessagesPath = new Firebase(\'http://gamma.firebase.com/chat/%@\');\
 $(document).ready(function () {\
 	chatMessagesPath.on(\'child_added\', function(childSnapshot) {\
 		var message = childSnapshot.val();\
