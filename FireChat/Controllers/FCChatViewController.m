@@ -21,6 +21,9 @@
 // templates
 #import "FCHtmlTemplates.h"
 
+// constants
+#import "FCConstants.h"
+
 // controllers
 #import "FCSettingsViewController.h"
 
@@ -175,7 +178,7 @@ static NSString *CellIdentifier = @"ChatCell";
 	
 	self.navigationItem.title = [NSString stringWithFormat:@"#%@", [[FCLocalResourceManager sharedInstance] getChatroom]];
 	
-	NSString *html = [NSString stringWithFormat:kFCHtmlChatTemplate, [[FCLocalResourceManager sharedInstance] getChatroom]];		
+	NSString *html = [NSString stringWithFormat:kFCHtmlChatTemplate, kFCBaseDomain, [[FCLocalResourceManager sharedInstance] getChatroom]];		
 	[webView loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];  
 }
 
