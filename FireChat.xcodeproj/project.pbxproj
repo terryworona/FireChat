@@ -537,8 +537,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -557,8 +557,8 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -568,8 +568,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -582,8 +582,8 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -592,6 +592,8 @@
 		5687DEF41523E33900177804 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -604,6 +606,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "88D652E5-E50B-490E-ACEE-97E0C0F3553A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -611,6 +615,8 @@
 		5687DEF51523E33900177804 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Terry Worona (TSLBDEEHR7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -623,6 +629,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F8BE34AD-AEF8-4773-9B40-3EA9970DBF92";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "88D652E5-E50B-490E-ACEE-97E0C0F3553A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
